@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gradient démocratique et géométrie des trajectoires (1980–2025)</title>
+  <!-- MathJax pour les équations -->
+  <script>
+    MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    };
+  </script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 16px 80px;
+      background: #fafafa;
+      color: #222;
+    }
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      margin-top: 2.0em;
+    }
+    h1 { font-size: 1.9rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.1rem; }
+    p { margin: 0.6em 0; }
+    figure {
+      margin: 2em auto;
+      text-align: center;
+    }
+    figure img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      background: white;
+      padding: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    figcaption {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.5em;
+    }
+    code {
+      font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      background: #f0f0f0;
+      padding: 0.1em 0.25em;
+      border-radius: 3px;
+    }
+    .equation-block {
+      margin: 1em 0;
+      padding: 0.75em 1em;
+      background: #fff;
+      border-left: 3px solid #999;
+      font-size: 0.95rem;
+    }
+    .encadre {
+      margin: 2em 0;
+      padding: 1em 1.2em;
+      background: #f5f7ff;
+      border-left: 4px solid #4c6fff;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    .small {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    ul {
+      margin: 0.4em 0 0.4em 1.2em;
+    }
+  </style>
+</head>
+<body>
+
+<h1>La géométrie des trajectoires démocratiques (1980–2025)<br>
+  <span class="small">Gradient civique et institutionnel, cartes de phase et radar des leviers</span>
+</h1>
+
+<h2>1. Introduction : d’une photographie de la démocratie à sa dynamique</h2>
+
+<p>
+Les indices globaux de démocratie (Freedom House, V-Dem, etc.) fournissent une <em>photographie</em> 
+de la situation politique d’un pays à un instant donné. Ils répondent à la question : 
+« À quel point ce pays est-il démocratique ? ». En revanche, ils renseignent peu sur la 
+<em>direction</em> et la <em>vitesse</em> d’évolution : pourquoi certaines démocraties se renforcent, 
+d’autres se fragilisent ou basculent, et pourquoi des autocraties restent remarquablement stables.
+</p>
+
+<p>
+L’objectif de ce texte est de proposer un modèle dynamique minimal permettant de caractériser
+non seulement le <em>niveau</em> de démocratie, mais aussi sa <em>pente</em> : c’est-à-dire le
+« gradient démocratique ». Ce gradient mesure comment la démocratie effective évoluerait si
+l’on modifiait marginalement certains leviers : éducation civique, qualité des institutions,
+inégalités, peur, propagande, etc.
+</p>
+
+<p>
+Quatre figures accompagnent ce modèle :
+</p>
+
+<ul>
+  <li><strong>Figure 1</strong> : carte de phase dans le plan $(\beta_1, \beta_4)$ avec frontières analytiques $C_0$ et $C_{0.3}$ pour les États-Unis et la Chine, et trajectoires de 10 pays entre 1980 et 2025 ;</li>
+  <li><strong>Figure 2</strong> : trajectoires des mêmes pays dans le plan $(\beta_3, \mu_3)$ (institutions vertueuses vs inégalités) ;</li>
+  <li><strong>Figure 3</strong> : trajectoires dans le plan $(\mu_3, \beta_4)$ (inégalités vs peur), avec de nouvelles frontières $C_0$ / $C_{0.3}$ calculées dans ce plan pour les États-Unis et la Chine ;</li>
+  <li><strong>Figure 4</strong> : radar à 7 axes représentant le gradient démocratique de 10 pays en 2025.</li>
+</ul>
+
+<h2>2. Deux variables fondamentales : citoyens et institutions</h2>
+
+<p>
+Nous modélisons la dynamique démocratique autour de deux variables continues :
+</p>
+
+<ul>
+  <li><strong>Adhésion civique</strong> $\alpha(t) \in [0,1]$ :
+    fraction de citoyens socialisés à la culture démocratique, dotés de compétences critiques
+    et relativement résistants aux narratifs de peur et de division.</li>
+  <li><strong>Qualité institutionnelle</strong> $Q(t) \in [0,1]$ :
+    robustesse de l’État de droit, indépendance de la justice, qualité de l’administration,
+    équilibre des pouvoirs et capacité des institutions à jouer leur rôle.</li>
+</ul>
+
+<p>
+Nous définissons alors la <strong>démocratie effective</strong> comme le produit :
+</p>
+
+<div class="equation-block">
+  \[
+    \Psi(t) = \alpha(t)\, Q(t).
+  \]
+</div>
+
+<p>
+Cette définition reflète l’idée qu’une société ne peut être durablement démocratique
+ni avec de bons citoyens sans institutions solides, ni avec de bonnes institutions
+mais un corps civique polarisé et manipulable.
+</p>
+
+<h2>3. Équations d’évolution</h2>
+
+<h3>3.1. Adhésion civique $\alpha(t)$</h3>
+
+<p>
+L’évolution de $\alpha(t)$ est modélisée par :
+</p>
+
+<div class="equation-block">
+  \[
+    \frac{d\alpha}{dt}
+    = \beta_1\,e\,(1-\alpha)
+      - \beta_4\,\zeta\,\alpha
+      + \beta_2\,(1-s)\,\alpha(1-\alpha)
+      + \beta_3\,Q\,(1-\alpha).
+  \]
+</div>
+
+<p>
+Interprétation des coefficients :
+</p>
+
+<ul>
+  <li>$\beta_1$ : intensité de l’<strong>éducation civique</strong> et de l’accès à des médias et savoirs de qualité ;</li>
+  <li>$\beta_2$ : capacité à gérer la <strong>vulnérabilité sociale</strong> interne (précarité, tensions communautaires, etc.) ;</li>
+  <li>$\beta_3$ : effet vertueux des <strong>institutions de qualité</strong> sur la confiance civique ;</li>
+  <li>$\beta_4$ : intensité de la <strong>peur, menace perçue, propagande anxiogène, polarisation</strong> (effet négatif) ;</li>
+  <li>$e$ : efficacité pédagogique ; $s$ : niveau de « stress » socio-économique ; $\zeta$ : sensibilité à la peur.</li>
+</ul>
+
+<p>
+Les facteurs $(1-\alpha)$ et $\alpha(1-\alpha)$ représentent des effets de saturation :
+les leviers ne produisent pas le même effet selon que la culture démocratique est très faible,
+intermédiaire ou déjà très élevée.
+</p>
+
+<h3>3.2. Qualité institutionnelle $Q(t)$</h3>
+
+<div class="equation-block">
+  \[
+    \frac{dQ}{dt}
+    = \mu_1\,\alpha\,\varepsilon
+      - \mu_2\,(1-\alpha)\,\Phi
+      - \mu_3\,G.
+  \]
+</div>
+
+<p>
+Interprétation :
+</p>
+
+<ul>
+  <li>$\mu_1$ : capacité du système à transformer une forte participation civique en
+      <strong>amélioration des institutions</strong> ;</li>
+  <li>$\mu_2$ : intensité de la <strong>captation autoritaire / propagande / corruption</strong>
+      qui dégrade les institutions ;</li>
+  <li>$\mu_3$ : poids des <strong>inégalités structurelles</strong> dans la dégradation de $Q$ ;</li>
+  <li>$\varepsilon$ : efficacité de l’investissement civique ; $\Phi$ : potentiel de polarisation ;
+      $G$ : échelle des inégalités.</li>
+</ul>
+
+<h2>4. Démocratie effective et gradient démocratique</h2>
+
+<h3>4.1. Évolution de $\Psi$</h3>
+
+<p>
+En dérivant $\Psi(t) = \alpha(t)Q(t)$, on obtient :
+</p>
+
+<div class="equation-block">
+  \[
+    \frac{d\Psi}{dt}
+    = \alpha\,\frac{dQ}{dt} + Q\,\frac{d\alpha}{dt}.
+  \]
+</div>
+
+<p>
+Cette quantité mesure la vitesse à laquelle la démocratie effective augmente ou diminue.
+</p>
+
+<h3>4.2. Gradient par rapport aux leviers politiques</h3>
+
+<p>
+Pour analyser l’effet marginal de chaque levier, on calcule :
+</p>
+
+<div class="equation-block">
+  \[
+    \frac{\partial}{\partial \theta}\left(\frac{d\Psi}{dt}\right),
+    \quad
+    \theta \in \{\beta_1,\beta_2,\beta_3,\beta_4,\mu_1,\mu_2,\mu_3\}.
+  \]
+</div>
+
+<p>
+En dérivant explicitement, on obtient :
+</p>
+
+<div class="equation-block">
+  \[
+  \begin{aligned}
+    \frac{\partial}{\partial \beta_1}\left(\frac{d\Psi}{dt}\right)
+      &= Q\,e\,(1-\alpha) & (>0),\\[4pt]
+    \frac{\partial}{\partial \beta_2}\left(\frac{d\Psi}{dt}\right)
+      &= Q\,(1-s)\,\alpha(1-\alpha) & (>0),\\[4pt]
+    \frac{\partial}{\partial \beta_3}\left(\frac{d\Psi}{dt}\right)
+      &= Q^2\,(1-\alpha) & (>0),\\[4pt]
+    \frac{\partial}{\partial \beta_4}\left(\frac{d\Psi}{dt}\right)
+      &= -Q\,\zeta\,\alpha & (<0),\\[4pt]
+    \frac{\partial}{\partial \mu_1}\left(\frac{d\Psi}{dt}\right)
+      &= \alpha^2\,\varepsilon & (>0),\\[4pt]
+    \frac{\partial}{\partial \mu_2}\left(\frac{d\Psi}{dt}\right)
+      &= -\alpha(1-\alpha)\,\Phi & (<0),\\[4pt]
+    \frac{\partial}{\partial \mu_3}\left(\frac{d\Psi}{dt}\right)
+      &= -\alpha\,G & (<0).
+  \end{aligned}
+  \]
+</div>
+
+<p>
+Les signes sont robustes :
+</p>
+
+<ul>
+  <li>$\beta_1, \beta_2, \beta_3, \mu_1$ sont des <strong>leviers constructifs</strong> (leur augmentation augmente la pente démocratique) ;</li>
+  <li>$\beta_4, \mu_2, \mu_3$ sont des <strong>leviers destructeurs</strong> (leur augmentation diminue la pente démocratique).</li>
+</ul>
+
+<p>
+Le <em>gradient démocratique</em> à un instant donné est donc un vecteur à 7 composantes
+qui décrit le « cocktail optimal » pour accélérer la démocratisation.
+</p>
+
+<h2>5. Figures 1 et 2 : cartes de phase dans $(\beta_1,\beta_4)$ et $(\beta_3,\mu_3)$</h2>
+
+<h3>5.1. Figure 1 — Plan $(\beta_1, \beta_4)$, frontières $C_0$ / $C_{0.3}$ et trajectoires 10 pays</h3>
+
+<figure>
+  <img src="fig1_b1_b4_phase_10pays.png" alt="Figure 1 - Plan (β1, β4)">
+  <figcaption>
+    <strong>Figure 1.</strong> Plan $(\beta_1, \beta_4)$ : éducation civique / pensée critique (abscisse)
+    vs peur / menace perçue (ordonnée). Les droites $C_0$ et $C_{0.3}$ sont tracées pour les États-Unis
+    et la Chine (frontières issues d’une linéarisation dans ce plan). Les trajectoires de 10 pays
+    sont représentées pour les années 1980, 1990, 2000, 2010, 2020 et 2025.
+  </figcaption>
+</figure>
+
+<p>
+Cette figure montre comment, pour des paramètres macro-institutionnels donnés, les combinaisons
+$(\beta_1,\beta_4)$ se répartissent en zones de stabilité démocratique, instabilité et stabilité autoritaire.
+Les trajectoires décadaires illustrent la dérive de certains pays vers des zones de plus forte peur
+et de plus faible robustesse démocratique.
+</p>
+
+<h3>5.2. Figure 2 — Plan $(\beta_3, \mu_3)$, institutions vs inégalités</h3>
+
+<figure>
+  <img src="fig2_b3_mu3_phase_10pays.png" alt="Figure 2 - Plan (β3, μ3)">
+  <figcaption>
+    <strong>Figure 2.</strong> Plan $(\beta_3, \mu_3)$ : effet vertueux des institutions sur la confiance civique
+    vs impact des inégalités structurelles sur la qualité institutionnelle. Trajectoires décadaires
+    (1980–2025) pour les 10 pays étudiés.
+  </figcaption>
+</figure>
+
+<p>
+Cette carte de phase met en évidence le rôle central des inégalités ($\mu_3$) comme frein institutionnel :
+les pays riches et relativement égalitaires (UE) évoluent dans une zone $\mu_3$ modérée, alors que d’autres
+(États-Unis, Brésil, Inde) se déplacent vers des valeurs plus élevées de $\mu_3$ malgré des progrès
+institutionnels partiels (hausse de $\beta_3$).
+</p>
+
+<h2>6. Figure 3 : plan $(\mu_3, \beta_4)$ et frontières $C_0/C_{0.3}$ recalculées</h2>
+
+<p>
+Nous considérons maintenant le plan $(\mu_3,\beta_4)$ : inégalités structurelles vs peur / propagande anxiogène.
+C’est le plan « populiste » par excellence, où se combinent les fractures sociales profondes et l’instrumentalisation
+de la peur.
+</p>
+
+<p>
+En regroupant les termes de $\frac{d\Psi}{dt}$ en fonction de $\mu_3$ et $\beta_4$ pour des valeurs données
+de $\alpha$ et $Q$, on obtient :
+</p>
+
+<div class="equation-block">
+  \[
+    \frac{d\Psi}{dt}
+    = C(\alpha,Q)
+      - \alpha G\,\mu_3
+      - Q\zeta\alpha\,\beta_4,
+  \]
+  où
+  \[
+    C(\alpha,Q) =
+      \alpha\big(\mu_1\alpha\varepsilon - \mu_2(1-\alpha)\Phi\big)
+      + Q\Big[\beta_1 e (1-\alpha)
+              + \beta_2 (1-s)\alpha(1-\alpha)
+              + \beta_3 Q (1-\alpha)\Big].
+  \]
+</div>
+
+<p>
+La condition de frontière neutre $d\Psi/dt = 0$ donne alors une droite :
+</p>
+
+<div class="equation-block">
+  \[
+    \beta_4(\mu_3;\alpha,Q)
+    = \frac{C(\alpha,Q) - \alpha G\,\mu_3}{Q\zeta\alpha}
+    = -\,\frac{1}{Q\zeta}\,\mu_3
+      + \frac{C(\alpha,Q)}{Q\zeta\alpha}.
+  \]
+</div>
+
+<p>
+La pente est donc toujours
+</p>
+
+<div class="equation-block">
+  \[
+    m = -\frac{1}{Q\zeta},
+  \]
+</div>
+
+<p>
+et l’ordonnée à l’origine
+</p>
+
+<div class="equation-block">
+  \[
+    b(\alpha,Q) = \frac{C(\alpha,Q)}{Q\zeta\alpha}.
+  \]
+</div>
+
+<p>
+Nous utilisons les paramètres numériques stylisés suivants :
+</p>
+
+<ul>
+  <li>$\beta_1 = 0{,}7,\ \beta_2 = 0{,}3,\ \beta_3 = 0{,}4$ ;</li>
+  <li>$e = 0{,}6,\ s = 0{,}5,\ \zeta = 0{,}8$ ;</li>
+  <li>$\mu_1 = 0{,}5,\ \mu_2 = 0{,}4,\ G = 1,\ \varepsilon = 0{,}5,\ \Phi = 0{,}6$ ;</li>
+  <li>seuil de démocratie stable : $\Psi^\star = 0{,}3$ ;</li>
+  <li>qualité institutionnelle de référence :
+    $Q_{\text{USA}} = 0{,}55$ (États-Unis), $Q_{\text{CH}} = 0{,}40$ (Chine) ;</li>
+  <li>deux valeurs d’adhésion civique :
+    quasi-autocratie $\alpha_{\text{aut}} = 0{,}15$,
+    seuil démocratique $\alpha_{\text{dem}} = \Psi^\star / Q$.</li>
+</ul>
+
+<p>
+Ainsi :
+</p>
+
+<ul>
+  <li>$\alpha_{\text{dem,USA}} = 0{,}3 / 0{,}55 \approx 0{,}545$ ;</li>
+  <li>$\alpha_{\text{dem,CH}} = 0{,}3 / 0{,}40 = 0{,}75$.</li>
+</ul>
+
+<p>
+En remplaçant numériquement, on obtient les quatre droites suivantes :
+</p>
+
+<div class="equation-block">
+  <p><strong>États-Unis :</strong></p>
+  \[
+    \text{C}_0\ \text{(USA)}: \quad
+    \beta_4 \approx -2{,}27\,\mu_3 + 4{,}31,
+  \]
+  \[
+    \text{C}_{0.3}\ \text{(USA)}: \quad
+    \beta_4 \approx -2{,}27\,\mu_3 + 0{,}81.
+  \]
+  <p><strong>Chine :</strong></p>
+  \[
+    \text{C}_0\ \text{(Chine)}: \quad
+    \beta_4 \approx -3{,}13\,\mu_3 + 3{,}75,
+  \]
+  \[
+    \text{C}_{0.3}\ \text{(Chine)}: \quad
+    \beta_4 \approx -3{,}13\,\mu_3 + 0{,}69.
+  \]
+</div>
+
+<p>
+Sur l’intervalle représenté $\mu_3 \in [0{,}25, 0{,}75]$ et $\beta_4 \in [0{,}3, 2]$ :
+</p>
+
+<ul>
+  <li>les droites $C_0$ (USA et Chine) sont largement au-dessus de 2 pour une partie du domaine ;</li>
+  <li>$C_{0.3}$ USA coupe la zone visible ;</li>
+  <li>$C_{0.3}$ Chine passe en grande partie en dessous de $\beta_4 = 0$, donc hors du graphe si l’on tronque les ordonnées à $\beta_4 \ge 0{,}3$.</li>
+</ul>
+
+<figure>
+  <img src="fig3_mu3_b4_C0C03_10pays.png" alt="Figure 3 - Plan (μ3, β4) avec C0/C0.3 USA/Chine">
+  <figcaption>
+    <strong>Figure 3.</strong> Plan $(\mu_3, \beta_4)$ : inégalités structurelles vs peur / menace perçue.
+    Les trajectoires décadaires (1980–2025) des 10 pays sont représentées, ainsi que les frontières
+    dynamiques $C_0$ et $C_{0.3}$ recalculées analytiquement pour les États-Unis et la Chine
+    dans ce plan.
+  </figcaption>
+</figure>
+
+<h2>7. Figure 4 : radar du gradient démocratique (10 pays, 2025)</h2>
+
+<p>
+À partir des expressions analytiques du gradient, on peut calibrer numériquement pour 2025
+les valeurs suivantes (exemple stylisé) :
+</p>
+
+<ul>
+  <li>pour chaque pays $P$, un vecteur
+    \[
+      \Big(
+        \frac{\partial(d\Psi/dt)}{\partial\beta_1},
+        \frac{\partial(d\Psi/dt)}{\partial\beta_2},
+        \frac{\partial(d\Psi/dt)}{\partial\beta_3},
+        \left|\frac{\partial(d\Psi/dt)}{\partial\beta_4}\right|,
+        \frac{\partial(d\Psi/dt)}{\partial\mu_1},
+        \left|\frac{\partial(d\Psi/dt)}{\partial\mu_2}\right|,
+        \left|\frac{\partial(d\Psi/dt)}{\partial\mu_3}\right|
+      \Big)_P.
+    \]</li>
+</ul>
+
+<p>
+La Figure 4 superpose ces 10 vecteurs sous forme de <strong>radar à 7 axes</strong> :
+</p>
+
+<figure>
+  <img src="fig4_radar_gradient_10pays_2025.png" alt="Figure 4 - Radar gradient démocratique 10 pays 2025">
+  <figcaption>
+    <strong>Figure 4.</strong> Radar du gradient démocratique (10 pays, 2025, valeurs brutes).
+    Chaque courbe représente, pour un pays, la sensibilité de la pente démocratique
+    aux différents leviers : $\beta_1,\beta_2,\beta_3,|\beta_4|,\mu_1,|\mu_2|,|\mu_3|$.
+  </figcaption>
+</figure>
+
+<p>
+Cette figure fournit une « empreinte » des leviers prioritaires par pays :
+quels paramètres augmenter (ou diminuer) pour obtenir le plus grand gain marginal
+de démocratie effective.
+</p>
+
+<h2>8. Discussion et conclusion : la démocratie comme pente, pas comme état</h2>
+
+<p>
+Les quatre figures et le modèle qui les sous-tend conduisent à une idée centrale :
+</p>
+
+<div class="encadre">
+  <strong>Ce n’est pas la valeur absolue de la démocratie qui détermine son avenir,
+  mais la <em>pente locale</em> de la trajectoire dans l’espace des phases.</strong>
+</div>
+
+<p>
+Les démocraties avancées (UE) apparaissent comme relativement stables, mais menacées
+par la montée de la peur ($\beta_4$) et des inégalités ($\mu_3$). Leur gradient
+suggère que la priorité est de réduire ces deux vulnérabilités, tout en maintenant
+éducation civique et qualité institutionnelle.
+</p>
+
+<p>
+Les démocraties fragilisées ou en devenir (États-Unis, Israël, Inde, Brésil, Hongrie, Turquie)
+partagent un même <em>cocktail optimal</em> : réduire la peur, la captation institutionnelle
+et les inégalités ($\beta_4, \mu_2, \mu_3$) tout en renforçant $\beta_1, \beta_3, \mu_1$.
+Elles diffèrent principalement par leur point de départ dans le paysage dynamique.
+</p>
+
+<p>
+Les autocraties consolidées (Chine, Russie, Iran) se trouvent dans des « vallées »
+où la pente démocratique est très faible : même un investissement important dans
+les leviers positifs produit un gain marginal limité, tant que les paramètres
+structurels restent défavorables. La Chine constitue un cas particulier où le couple
+institutions fortes / esprit critique ($\beta_3$ et $\beta_1$) pourrait, à terme,
+ouvrir une trajectoire de modernisation politique spécifique, différente des modèles
+occidentaux sans leur être nécessairement inférieure en termes de qualité de gouvernance.
+</p>
+
+<p>
+Le langage du gradient démocratique et les cartes de phase associées offrent ainsi
+une géométrie intelligible des trajectoires politiques contemporaines : une manière
+de passer d’un classement statique des régimes à une description dynamique des
+<em>directions</em> possibles et des <em>pentes</em> sur lesquelles se trouvent les sociétés.
+</p>
+
+</body>
+</html>
